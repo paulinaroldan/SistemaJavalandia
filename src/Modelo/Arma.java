@@ -6,13 +6,13 @@ public class Arma {
 private String nombre;
 private String categoria;
 private int cantidadDisponible;
-private ArrayList<String> listaArmas;
+private ArrayList<String> materialCreacion;
 
-    public Arma(String nombre, String categoria, int cantidadDisponible, ArrayList<String> listaArmas) {
+    public Arma(String nombre, String categoria, int cantidadDisponible, ArrayList<String> materialCreacion) {
         this.nombre = nombre;
         this.categoria = categoria;
         this.cantidadDisponible = cantidadDisponible;
-        this.listaArmas = listaArmas;
+        this.materialCreacion = materialCreacion;
     }
 
     @Override
@@ -21,7 +21,7 @@ private ArrayList<String> listaArmas;
                 "nombre='" + nombre + '\'' +
                 ", categoria='" + categoria + '\'' +
                 ", cantidadDisponible=" + cantidadDisponible +
-                ", listaArmas=" + listaArmas +
+                ", materialCreacion=" + materialCreacion +
                 '}';
     }
 }

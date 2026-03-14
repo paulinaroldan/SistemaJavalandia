@@ -9,4 +9,15 @@ public class Escudero extends Habitante{
         super(nombreCompleto, reinoProcedencia, id, honorabilidad);
         this.listaArmas = new ArrayList<>();
     }
+
+    public void cargarListaArmas(Arma a1){
+        listaArmas.add(a1);
+    }
+
+    @Override
+    public String toString() {
+        return super.toString()+"Escudero{" +
+                "listaArmas=" + listaArmas +
+                '}';
+    }
 }

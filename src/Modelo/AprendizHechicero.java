@@ -7,4 +7,11 @@ public class AprendizHechicero extends Habitante{
         super(nombreCompleto, reinoProcedencia, id, honorabilidad);
         this.artefactoMagicoEsp = artefactoMagicoEsp;
     }
+
+    @Override
+    public String toString() {
+        return super.toString()+"AprendizHechicero{" +
+                "artefactoMagicoEsp='" + artefactoMagicoEsp + '\'' +
+                '}';
+    }
 }
