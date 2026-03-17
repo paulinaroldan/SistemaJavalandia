@@ -55,7 +55,7 @@ public class RepositorioHabitante implements IRepositorio <IHabitante, Integer> 
     public String listar() {
         String rta="";
         for (IHabitante el: lista){
-            rta+=el.toString();
+            rta+=el.toString()+"\n";
         }
         return rta;
     }

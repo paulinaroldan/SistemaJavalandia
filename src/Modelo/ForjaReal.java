@@ -57,7 +57,7 @@ public class ForjaReal implements IRepositorio <IArma, String>{
     public String listar() {
         String rta="";
         for (Map.Entry<String, IArma> entry : armas.entrySet()) {
-            rta+=entry.toString();
+            rta+=entry.toString()+"\n";
         }
         return rta;
     }
