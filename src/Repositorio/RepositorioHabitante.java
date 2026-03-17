@@ -1,70 +1,67 @@
 package Repositorio;
 
+import Excepcion.DatosIncompletosEx;
 import Excepcion.HabitanteDuplicadoEx;
-
-import Excepcion.HabitanteNoEncontradoEx;
 import Modelo.IHabitante;
 
 import java.util.ArrayList;
 
 
-public class RepositorioHabitante implements IRepositorio <IHabitante>{
+public class RepositorioHabitante implements IRepositorio <IHabitante, Integer> {
 
-    private ArrayList<IHabitante> listaHabitante;
+    private ArrayList<IHabitante> lista;
 
     public RepositorioHabitante(){
-        listaHabitante = new ArrayList<>();
+        lista = new ArrayList<>();
     }
 
     @Override
-    public void registrar(IHabitante elemento) throws HabitanteDuplicadoEx {
-        for (IHabitante h:  listaHabitante){
-            if (h.getId()==elemento.getId()){
-                throw new HabitanteDuplicadoEx("Ya existe el habitante, no se puede agregar.");
+    public void registrar(IHabitante elemento) throws DatosIncompletosEx, HabitanteDuplicadoEx {
+        for (IHabitante el: lista){
+            if (el.getId()== elemento.getId()){
+                throw new HabitanteDuplicadoEx("Ya existe, no se puede agregar");
+            }
+            if (elemento.getId()<=0){
+                throw new DatosIncompletosEx("No puede estar el id vacio");
             }
         }
-        listaHabitante.add(elemento);
+        lista.add(elemento);
     }
 
     @Override
-    public boolean eliminar(int id) throws HabitanteNoEncontradoEx {
+    public boolean eliminar(Integer id) {
         boolean encontrado=false;
-        for (int i=0;i<listaHabitante.size();i++){
-            if (listaHabitante.get(i).getId()==id){
-                listaHabitante.remove(i);
+        for (IHabitante el: lista){
+            if (el.getId()==id){
+                lista.remove(el);
                 encontrado=true;
-            }else {
-                throw new HabitanteNoEncontradoEx("No se encontro un habitante con ese id");
             }
         }
         return encontrado;
     }
 
     @Override
-    public String buscar(int id) throws HabitanteNoEncontradoEx {
+    public String buscar(Integer id) {
         String rta="";
-        for (IHabitante h:  listaHabitante){
-            if (h.getId()==id){
-                rta=h.toString();
-            }else {
-                throw new HabitanteNoEncontradoEx("No se encontro un habitante con ese id");
+        for (IHabitante el: lista){
+            if (el.getId()==id){
+                rta=el.toString();
             }
         }
-
         return rta;
     }
 
     @Override
     public String listar() {
         String rta="";
-        for (IHabitante h:  listaHabitante){
-            rta+=h.toString();
+        for (IHabitante el: lista){
+            rta+=el.toString();
         }
         return rta;
     }
 
     @Override
     public int contar() {
-        return listaHabitante.size();
+        return lista.size();
     }
 }

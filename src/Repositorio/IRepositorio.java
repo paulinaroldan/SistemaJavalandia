@@ -1,9 +1,9 @@
 package Repositorio;
 
-public interface IRepositorio <T>{
+public interface IRepositorio <T, K>{
     void registrar(T elemento);
-    boolean eliminar(int id);
-    String buscar(int id);
+    boolean eliminar(K id);
+    String buscar(K id);
     String listar();
     int contar();
 }

@@ -1,6 +1,6 @@
 package Modelo;
 
-public abstract class Habitante implements IHabitante {
+public abstract class Habitante implements IHabitante{
     private String nombreCompleto;
     private String reinoProcedencia;
     private int id;

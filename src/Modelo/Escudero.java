@@ -3,14 +3,14 @@ package Modelo;
 import java.util.ArrayList;
 
 public class Escudero extends Habitante{
-    ArrayList <Arma> listaArmas;
+    ArrayList <IArma> listaArmas;
 
     public Escudero(String nombreCompleto, String reinoProcedencia, int id, boolean honorabilidad) {
         super(nombreCompleto, reinoProcedencia, id, honorabilidad);
         this.listaArmas = new ArrayList<>();
     }
 
-    public void cargarListaArmas(Arma a1){
+    public void cargarListaArmas(IArma a1){
         listaArmas.add(a1);
     }
 
