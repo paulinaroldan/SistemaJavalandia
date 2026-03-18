@@ -27,7 +27,8 @@ public class Menu {
             System.out.println("3. Buscar");
             System.out.println("4. Eliminar");
             System.out.println("5. Contar elementos");
-            System.out.println("6. Salir");
+            System.out.println("6. Actualizar cantidad disponible armas");
+            System.out.println("7. Salir");
             opcion = sc.nextInt();
             sc.nextLine();
             switch (opcion) {
@@ -47,14 +48,21 @@ public class Menu {
                     elegirContar();
                     break;
                 case 6:
+                    System.out.println("Ingrese nombre del arma");
+                    String nombre = sc.nextLine();
+                    System.out.println("Ingrese nueva cantidad disponible armas");
+                    int nuevaCant = sc.nextInt();
+                    System.out.println(forja.actualizarCantDisponible(nombre, nuevaCant));
+                    break;
+                case 7:
                     seguir = 'n';
                     break;
             }
-            if (opcion != 6) {
+            if (opcion != 7) {
                 System.out.println("Quiere elegir otra opcion del menu? s-n");
                 seguir = sc.next().charAt(0);
             }
-        } while (seguir == 's' && opcion != 6);
+        } while (seguir == 's' && opcion != 7);
     }
 
     private void elegirCargar() {
@@ -212,7 +220,6 @@ public class Menu {
             Arma a1 = new Arma(nombre, categoria, cantidad);
             try {
                 forja.registrar(a1);
-                System.out.println("arma cargada con exito");
             } catch (ArmaDuplicadaEx e) {
                 System.out.println(e.getMessage());
             } catch (DatosIncompletosEx e) {

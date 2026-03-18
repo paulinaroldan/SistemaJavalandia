@@ -66,4 +66,21 @@ public class ForjaReal implements IRepositorio <IArma, String>{
     public int contar() {
         return armas.size();
     }
+
+    //actualizar cant disponible de un arma
+    public String actualizarCantDisponible(String nombre, int nueva) throws ArmaNoEncontradaEx, DatosIncompletosEx {
+        String rta="";
+        if (nueva<0){
+            throw new DatosIncompletosEx("Cantidad invalida");
+        }
+        if (armas.containsKey(nombre)) {
+            IArma arma=armas.get(nombre);
+            arma.setCantidadDisponible(nueva);
+            rta="se actualizo la cantidad con exito";
+        }else {
+            throw new ArmaNoEncontradaEx("Arma no encontrada");
+        }
+        return rta;
+    }
+
 }
