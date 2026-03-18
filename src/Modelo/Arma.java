@@ -5,11 +5,11 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Arma implements IArma{
-private String nombre;
-private String categoria;
-private int cantidadDisponible;
-private ArrayList<String> materialCreacion;
+public class Arma implements IArma {
+    private String nombre;
+    private String categoria;
+    private int cantidadDisponible;
+    private ArrayList<String> materialCreacion;
 
     public Arma(String nombre, String categoria, int cantidadDisponible) {
         this.nombre = nombre;
@@ -18,7 +18,7 @@ private ArrayList<String> materialCreacion;
         this.materialCreacion = new ArrayList<>();
     }
 
-    public void cargarMaterialCreacion(String material){
+    public void cargarMaterialCreacion(String material) {
         materialCreacion.add(material);
     }
 
@@ -73,20 +73,19 @@ private ArrayList<String> materialCreacion;
                 '}';
     }
 
-    public JSONObject toJSON(){
+    @Override
+    public JSONObject toJSON() {
         JSONObject jsonObject = new JSONObject();
-
-        jsonObject.put("nombre", nombre);
-        jsonObject.put("categoria", categoria);
-        jsonObject.put("cantidadDisponible", cantidadDisponible);
+        jsonObject.put("nombre", this.nombre);
+        jsonObject.put("categoria", this.categoria);
+        jsonObject.put("cantidadDisponible", this.cantidadDisponible);
 
         JSONArray materiales = new JSONArray();
-        for (String mat : materialCreacion) {
+        for (String mat : this.materialCreacion) {
             materiales.put(mat);
         }
 
         jsonObject.put("materialCreacion", materiales);
-
         return jsonObject;
     }
 }

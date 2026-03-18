@@ -4,6 +4,9 @@ import Excepcion.ArmaDuplicadaEx;
 import Excepcion.ArmaNoEncontradaEx;
 import Excepcion.DatosIncompletosEx;
 import Repositorio.IRepositorio;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -83,4 +86,14 @@ public class ForjaReal implements IRepositorio <IArma, String>{
         return rta;
     }
 
+    public JSONObject toJSON() throws JSONException {
+        JSONObject jsonObject=new JSONObject();
+        JSONArray jsonArray=new JSONArray();
+        for (IArma arma : armas.values()) {
+            jsonArray.put(arma.toJSON());
+        }
+        jsonObject.put("armas", jsonArray);
+        return jsonObject;
+    }
+    
 }

@@ -1,5 +1,7 @@
 package Modelo;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public interface IArma {
@@ -11,4 +13,5 @@ public interface IArma {
     void setCategoria(String categoria);
     void setCantidadDisponible(int cantidadDisponible);
     void setMaterialCreacion(ArrayList<String> materialCreacion);
+    JSONObject toJSON();
 }
