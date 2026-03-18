@@ -9,13 +9,14 @@ import java.io.IOException;
 import java.nio.file.Files;
 
 public class ArchivoBibliotecaReal {
-    private final String archivo = "armasForjadas";
+
     JSONArray jsonArr=new JSONArray();
-    ForjaReal forja=new ForjaReal();
 
     //serializar
-    public void objetoAjson(){
-
+    public void objetoAjson(ForjaReal forja){
+        for (IArma arma : forja.getArmas().values()) {
+            jsonArr.put(arma.toJSON());
+        }
     }
     public void escribirArchivo(String nombreArchivo) {
         try {

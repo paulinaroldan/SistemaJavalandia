@@ -18,6 +18,10 @@ public class ForjaReal implements IRepositorio <IArma, String>{
         this.armas = new HashMap();
     }
 
+    public Map<String, IArma> getArmas() {
+        return armas;
+    }
+
     @Override
     public void registrar(IArma elemento) throws ArmaDuplicadaEx, DatosIncompletosEx{
        if (armas.containsKey(elemento.getNombre())) {
@@ -95,5 +99,5 @@ public class ForjaReal implements IRepositorio <IArma, String>{
         jsonObject.put("armas", jsonArray);
         return jsonObject;
     }
-    
+
 }

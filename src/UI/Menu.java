@@ -9,11 +9,14 @@ import java.util.Scanner;
 
 public class Menu {
     private IRepositorio repositorio;
-    ForjaReal forja;
+    private ForjaReal forja;
+    private ArchivoBibliotecaReal archivoBibliotecaReal;
+    private final String archivo = "armasForjadas";
 
     public Menu() {
         this.repositorio = new RepositorioHabitante();
         this.forja = new ForjaReal();
+        this.archivoBibliotecaReal = new ArchivoBibliotecaReal();
     }
 
     public void menuFinal() {
@@ -28,7 +31,9 @@ public class Menu {
             System.out.println("4. Eliminar");
             System.out.println("5. Contar elementos");
             System.out.println("6. Actualizar cantidad disponible armas");
-            System.out.println("7. Salir");
+            System.out.println("7. Guardar armas en JSON");
+            System.out.println("8. Mostrar archivo JSON");
+            System.out.println("9. Salir");
             opcion = sc.nextInt();
             sc.nextLine();
             switch (opcion) {
@@ -55,14 +60,22 @@ public class Menu {
                     System.out.println(forja.actualizarCantDisponible(nombre, nuevaCant));
                     break;
                 case 7:
+                    archivoBibliotecaReal.objetoAjson(forja);
+                    archivoBibliotecaReal.escribirArchivo(archivo);
+                    break;
+                case 8:
+                    String contenidoArchivo=archivoBibliotecaReal.mostrarArchivo(archivo);
+                    System.out.println(contenidoArchivo);
+                    break;
+                case 9:
                     seguir = 'n';
                     break;
             }
-            if (opcion != 7) {
+            if (opcion != 9) {
                 System.out.println("Quiere elegir otra opcion del menu? s-n");
                 seguir = sc.next().charAt(0);
             }
-        } while (seguir == 's' && opcion != 7);
+        } while (seguir == 's' && opcion != 9);
     }
 
     private void elegirCargar() {
@@ -234,6 +247,7 @@ public class Menu {
 
             System.out.println("Quiere cargar otra arma s-n?");
             seguir = sc.next().charAt(0);
+            sc.nextLine();
 
         }
 
@@ -261,6 +275,7 @@ public class Menu {
             }
             System.out.println("quiere mostrar otra opcion? s-n");
             seguir = sc.next().charAt(0);
+            sc.nextLine();
         }
 
     }

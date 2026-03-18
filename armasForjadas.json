@@ -1,0 +1,19 @@
+[
+  {
+    "categoria": "buena",
+    "materialCreacion": [
+      "oro"
+    ],
+    "nombre": "escopeta",
+    "cantidadDisponible": 2
+  },
+  {
+    "categoria": "muy buena",
+    "materialCreacion": [
+      "oro",
+      "diamante"
+    ],
+    "nombre": "franco tirador",
+    "cantidadDisponible": 5
+  }
+]
