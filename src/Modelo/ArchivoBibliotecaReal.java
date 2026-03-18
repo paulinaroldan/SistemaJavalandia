@@ -1,5 +1,7 @@
 package Modelo;
 
+import org.json.JSONArray;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -8,6 +10,8 @@ import java.nio.file.Files;
 
 public class ArchivoBibliotecaReal {
     private final String archivo = "armasForjadas";
+    JSONArray jsonArr=new JSONArray();
+    ForjaReal forja=new ForjaReal();
 
     //serializar
     public void objetoAjson(){
